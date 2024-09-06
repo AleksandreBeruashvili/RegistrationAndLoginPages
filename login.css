@@ -77,20 +77,14 @@ input[type="submit"]:active {
     background-color: #004085;  /* Even darker blue on click */
 }
 
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
+.container a {
+    display: block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
     font-size: 14px;
-    text-align: center;
 }
 
-.alert.success {
-    background-color: #dff0d8;
-    color: #3c763d;
-}
-
-.alert.error {
-    background-color: #f2dede;
-    color: #a94442;
+.container a:hover {
+    text-decoration: underline;
 }

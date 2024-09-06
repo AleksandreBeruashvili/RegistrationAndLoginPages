@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "registration_db";
+$dbname = "beru_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -27,16 +27,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
         // Verify password
         if (password_verify($password, $user['password'])) {
-            echo "Login successful!";
-            // Here you can start a session, set cookies, etc.
+            // Redirect to dashboard.php on successful login
+            header("Location: dashboard.php?username=" . urlencode($username));
+            exit();
         } else {
-            echo "Invalid password.";
+            echo "<div class='alert error'>Invalid password. Please try again.</div>";
         }
     } else {
-        echo "No user found with that username.";
+        echo "<div class='alert error'>No user found with that username.</div>";
     }
 
     $stmt->close();
-    $conn->close();
 }
+
+$conn->close();
 ?>

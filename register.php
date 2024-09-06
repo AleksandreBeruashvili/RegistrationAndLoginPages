@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "registration_db";
+$username = "root";  // Default XAMPP username
+$password = "";  // Default XAMPP password is empty
+$dbname = "beru_db";  // Your database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
+    $password = password_hash($_POST["password"], PASSWORD_BCRYPT);  // Hash the password securely
 
     // Check if the user already exists
     $checkUserSql = "SELECT * FROM users WHERE username = ? OR email = ?";
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<meta charset='UTF-8'>";
             echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
             echo "<title>Registration Successful</title>";
-            echo "<link rel='stylesheet' href='register.css'>"; // Link to external CSS file
+            echo "<link rel='stylesheet' href='register.css'>";  // Link to external CSS file
             echo "</head>";
             echo "<body>";
             echo "<div class='container'>";
